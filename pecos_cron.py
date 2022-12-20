@@ -42,6 +42,10 @@ def download(uuid):
     content.seek(0)
     zip_file = zipfile.ZipFile(content)
     zip_file.extractall(dump_folder)
+    
+    subprocess.run(["bash", "/home/ubuntu/pecos/pecos_dump_to_s3.sh"])
+    subprocess.run(["bash", "/home/ubuntu/pecos/pecos_clean.sh"])
+
 
 if __name__ == "__main__":
     uuid = get_dataset_uuid()
