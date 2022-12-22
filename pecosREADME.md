@@ -101,7 +101,7 @@ rm archive_s3.sh  clean.sh  cron.sh  dump_to_s3.sh  remove_old_dump.sh
 
 # Change Permissions of bash Files
 ```
-chmod +x    pecos_remove_old_dump.sh pecos_dump_to_s3.sh  pecos_cron.sh pecos_archive_s3.sh pecos_clean.sh  
+chmod +x   pecos_archive_s3.sh  pecos_clean.sh  pecos_cron.sh  pecos_dump_to_s3.sh  pecos_remove_old_dump.sh  
 
 ```
 
