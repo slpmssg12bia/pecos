@@ -125,7 +125,7 @@ nano /etc/crontab
 ```
 # Create Cron Job ~ https://crontab.guru/examples.html
 ```
-04 04 * * * root bash /home/ubuntu/pecos/pecos_cron.sh
+04 04 10 */3 * root bash /home/ubuntu/pecos/pecos_cron.sh
 !!!CARRIAGE RETURN after line above!!!!!
 
 ctrl x
