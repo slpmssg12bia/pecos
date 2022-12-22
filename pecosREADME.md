@@ -56,7 +56,7 @@ touch pecos_dump_to_s3.sh
 nano pecos_dump_to_s3.sh
 
 #!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/currentdump/pecosdump/
 
 ctrl X
 Y
@@ -71,6 +71,16 @@ aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/archive/
 ctrl X
 Y
 ---------------------------------------------------
+
+touch pecos_remove_old_dump.sh
+nano pecos_remove_old_dump.sh
+
+#!/bin/bash
+aws s3 rm s3://viquity-database-import-us-east-1/Jobs/test/currentdump --recursive
+
+ctrl X
+Y
+--------------------------------------------------
 touch pecos_cron.sh
 nano pecos_cron.sh
 
@@ -83,12 +93,13 @@ Y
 ```
 # Delete Original bash files
 ```
-rm clean.sh  dump_to_s3.sh  cron.sh
+rm clean.sh  dump_to_s3.sh  cron.sh remove_old_dump.sh archive_s3.sh
 ```
 
 # Change Permissions of bash Files
 ```
-chmod +x   pecos_clean.sh  pecos_dump_to_s3.sh  pecos_cron.sh pecos_archive_s3.sh
+chmod +x    pecos_remove_old_dump.sh pecos_dump_to_s3.sh  pecos_cron.sh pecos_archive_s3.sh pecos_clean.sh  
+
 ```
 
 # install pip dependencies
@@ -111,7 +122,7 @@ nano /etc/crontab
 ```
 # Create Cron Job ~ https://crontab.guru/examples.html
 ```
-04 04 10 */3 * root bash /home/ubuntu/pecos/pecos_cron.sh
+04 04 * * * root bash /home/ubuntu/pecos/pecos_cron.sh
 !!!CARRIAGE RETURN after line above!!!!!
 
 ctrl x
