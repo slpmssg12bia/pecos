@@ -101,7 +101,7 @@ rm archive_s3.sh  clean.sh  cron.sh  dump_to_s3.sh  remove_old_dump.sh
 
 # Change Permissions of bash Files
 ```
-chmod +x   pecos_archive_s3.sh  pecos_clean.sh  pecos_cron.sh  pecos_dump_to_s3.sh  pecos_remove_old_dump.sh  
+chmod +x   pecos_archive_s3.sh  pecos_clean.sh  pecos_cron.sh  pecos_dump_to_s3.sh  pecos_remove_old_dump.sh     
 
 ```
 
@@ -123,10 +123,8 @@ pip install -r pecos_requirements.txt
 
 nano /etc/crontab
 ```
-
 # Create Cron Job ~ https://crontab.guru/examples.html
 ```
-
 04 04 10 */3 * root bash /home/ubuntu/pecos/pecos_cron.sh
 !!!CARRIAGE RETURN after line above!!!!!
 
