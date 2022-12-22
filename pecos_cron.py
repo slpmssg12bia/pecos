@@ -44,7 +44,7 @@ def download(uuid):
     zip_file.extractall(dump_folder)
     
     subprocess.run(["bash", "/home/ubuntu/pecos/pecos_dump_to_s3.sh"])
-    subprocess.run(["bash", "/home/ubuntu/pecos/archive.sh"])
+    subprocess.run(["bash", "/home/ubuntu/pecos/pecos_archive_s3.sh"])
     subprocess.run(["bash", "/home/ubuntu/pecos/pecos_clean.sh"])
 
 
