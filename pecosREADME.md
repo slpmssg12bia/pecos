@@ -48,7 +48,7 @@ touch pecos_archive_s3.sh
 nano pecos_archive_s3.sh
 
 #!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/pecosarchive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecosarchive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
 
 ctrl X
 Y
