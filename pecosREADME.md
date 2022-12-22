@@ -43,6 +43,17 @@ cd pecos
 ```
 # Recreate bash Files
 ```
+
+touch pecos_archive_s3.sh
+nano pecos_archive_s3.sh
+
+#!/bin/bash
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/pecosarchive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+
+ctrl X
+Y
+
+---------------------------------
 touch pecos_clean.sh
 nano pecos_clean.sh
 
@@ -52,35 +63,6 @@ rm -rf pecosdump
 ctrl X
 Y
 ---------------------------------
-touch pecos_dump_to_s3.sh
-nano pecos_dump_to_s3.sh
-
-#!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/currentdump/pecosdump/
-
-ctrl X
-Y
-------------------------
-
-touch pecos_archive_s3.sh
-nano pecos_archive_s3.sh
-
-#!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/archive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
-
-ctrl X
-Y
----------------------------------------------------
-
-touch pecos_remove_old_dump.sh
-nano pecos_remove_old_dump.sh
-
-#!/bin/bash
-aws s3 rm s3://viquity-database-import-us-east-1/Jobs/test/currentdump --recursive
-
-ctrl X
-Y
---------------------------------------------------
 touch pecos_cron.sh
 nano pecos_cron.sh
 
@@ -90,10 +72,31 @@ python3 pecos_cron.py
 
 ctrl X
 Y
-```
+---------------------------------
+
+touch pecos_dump_to_s3.sh
+nano pecos_dump_to_s3.sh
+
+#!/bin/bash
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecoscurrentdump/pecosdump/
+
+ctrl X
+Y
+---------------------------------
+
+touch pecos_remove_old_dump.sh
+nano pecos_remove_old_dump.sh
+
+#!/bin/bash
+aws s3 rm s3://viquity-database-import-us-east-1/Jobs/pecos/pecoscurrentdump --recursive
+
+ctrl X
+Y
+---------------------------------
+
 # Delete Original bash files
 ```
-rm clean.sh  dump_to_s3.sh  cron.sh remove_old_dump.sh archive_s3.sh
+rm archive_s3.sh  clean.sh  cron.sh  dump_to_s3.sh  remove_old_dump.sh 
 ```
 
 # Change Permissions of bash Files
