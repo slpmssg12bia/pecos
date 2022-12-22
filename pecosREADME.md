@@ -56,11 +56,21 @@ touch pecos_dump_to_s3.sh
 nano pecos_dump_to_s3.sh
 
 #!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
 
 ctrl X
 Y
 ------------------------
+
+touch pecos_archive_s3.sh
+nano pecos_archive_s3.sh
+
+#!/bin/bash
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/test/archive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+
+ctrl X
+Y
+---------------------------------------------------
 touch pecos_cron.sh
 nano pecos_cron.sh
 
@@ -78,7 +88,7 @@ rm clean.sh  dump_to_s3.sh  cron.sh
 
 # Change Permissions of bash Files
 ```
-chmod +x   pecos_clean.sh  pecos_dump_to_s3.sh  pecos_cron.sh
+chmod +x   pecos_clean.sh  pecos_dump_to_s3.sh  pecos_cron.sh pecos_archive_s3.sh
 ```
 
 # install pip dependencies
