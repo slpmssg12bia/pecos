@@ -92,7 +92,7 @@ aws s3 rm s3://viquity-database-import-us-east-1/Jobs/pecos/pecoscurrentdump --r
 
 ctrl X
 Y
----------------------------------
+```
 
 # Delete Original bash files
 ```
