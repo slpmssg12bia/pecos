@@ -48,7 +48,7 @@ touch pecos_archive_s3.sh
 nano pecos_archive_s3.sh
 
 #!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecosarchive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecos_archive/pecosdump-"$(date +%d-%m-%y-%H-%M)"/
 
 ctrl X
 Y
@@ -78,7 +78,7 @@ touch pecos_dump_to_s3.sh
 nano pecos_dump_to_s3.sh
 
 #!/bin/bash
-aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecoscurrentdump/pecosdump/
+aws s3 sync pecosdump/ s3://viquity-database-import-us-east-1/Jobs/pecos/pecos_current_dump/pecosdump/
 
 ctrl X
 Y
@@ -88,7 +88,7 @@ touch pecos_remove_old_dump.sh
 nano pecos_remove_old_dump.sh
 
 #!/bin/bash
-aws s3 rm s3://viquity-database-import-us-east-1/Jobs/pecos/pecoscurrentdump --recursive
+aws s3 rm s3://viquity-database-import-us-east-1/Jobs/pecos/pecos_current_dump --recursive
 
 ctrl X
 Y
