@@ -29,8 +29,6 @@ def download(uuid):
                     print(f"({c+1}/4) Downloding {file_name} {downloaded / 1024 / 1024:.2f} MB", end="\r", flush=True)
                     f.write(chunk)
         print()
-        
-    subprocess.run(["bash", "/home/ubuntu/pecos/pecos_remove_old_dump.sh"])
 
     res = requests.head(f'https://data.cms.gov/data-api/v1/dataset/{uuid}/data-viewer?_format=csv')
     file_name = res.headers['Content-Disposition'].split('filename=')[1]
@@ -45,6 +43,7 @@ def download(uuid):
     zip_file = zipfile.ZipFile(content)
     zip_file.extractall(dump_folder)
     
+    subprocess.run(["bash", "/home/ubuntu/pecos/pecos_remove_old_dump.sh"])
     subprocess.run(["bash", "/home/ubuntu/pecos/pecos_dump_to_s3.sh"])
     subprocess.run(["bash", "/home/ubuntu/pecos/pecos_archive_s3.sh"])
     subprocess.run(["bash", "/home/ubuntu/pecos/pecos_clean.sh"])
